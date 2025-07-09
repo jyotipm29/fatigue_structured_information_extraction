@@ -1,0 +1,651 @@
+@prefix linkml: <https://w3id.org/linkml/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/pmd/co/fatiguetesting.owl.ttl> a owl:Ontology ;
+    rdfs:label "FatigueTestSeriesSchema" .
+
+<https://w3id.org/pmd/co/fatiguetesting/Container> a owl:Class ;
+    rdfs:label "Container" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/fatigue_test_series_list> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/pmd/co/fatiguetesting/FatigueTestSeries> ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/fatigue_test_series_list> ] ;
+    skos:definition "Root container class holding a collection of fatigue test series." ;
+    skos:inScheme <https://w3id.org/pmd/co/fatiguetesting> .
+
+<https://w3id.org/pmd/co/fatiguetesting/FatigueTestSeries> a owl:Class ;
+    rdfs:label "FatigueTestSeries" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/waveform_type> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:decimal ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/ratio_r_value> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/fatigue_endurance_limit_unit> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/sn_curve_y_axis_label> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/test_temperature_unit> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/test_frequency_unit> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/pmd/co/fatiguetesting/AxisScaleValue> ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/sn_curve_x_axis_scale> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/sn_curve_x_axis_label> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/sn_curve_y_axis_scale> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/sn_curve_y_axis_scale> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:decimal ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/knee_point_value> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/test_temperature_value> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/fatigue_testing_machine_name> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/series_reference_from_text> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/fatigue_testing_machine_name> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/knee_point_value> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:decimal ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/test_frequency_value> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/mean_stress_unit> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/sn_curve_y_axis_label> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/test_medium> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/series_reference_from_image> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/fatigue_strength_at_cycle_limit_unit> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/sn_curve_slope_value> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/test_temperature_unit> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/ratio_r_descriptor> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/mean_stress_value> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/fatigue_testing_machine_name> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/sn_curve_x_axis_scale> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/sn_curve_x_axis_scale> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/test_frequency_range> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/failure_criterion> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/testing_standard> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/test_frequency_range> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/pmd/co/fatiguetesting/WaveformTypeValue> ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/waveform_type> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/test_frequency_unit> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/mean_stress_unit> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/control_type> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/fatigue_endurance_limit_unit> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/series_reference_from_text> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/fatigue_testing_machine_class> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/sn_curve_x_axis_label> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/test_temperature_unit> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:decimal ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/test_temperature_value> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/series_reference_from_image> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/fatigue_endurance_limit_value> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/test_temperature_value> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/ratio_r_value> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/fatigue_testing_machine_class> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/fatigue_testing_machine_class> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/waveform_type> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:decimal ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/cycle_limit_value> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/sn_curve_slope_value> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:decimal ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/sn_curve_slope_value> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/sn_curve_y_axis_label> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/test_frequency_unit> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/cycle_limit_value> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/cycle_limit_value> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/failure_criterion> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/fatigue_strength_at_cycle_limit_value> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/series_reference_from_image> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:decimal ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/fatigue_strength_at_cycle_limit_value> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/pmd/co/fatiguetesting/ControlTypeValue> ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/control_type> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/test_medium> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/fatigue_strength_at_cycle_limit_value> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/knee_point_value> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/test_frequency_value> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/ratio_r_value> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/ratio_r_descriptor> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/fatigue_endurance_limit_value> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/test_temperature_descriptor> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/mean_stress_unit> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/loading_type> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/sn_curve_x_axis_label> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/loading_type> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/fatigue_endurance_limit_unit> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/failure_criterion> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/control_type> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/test_temperature_descriptor> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/stress_concentration_factor_value> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/test_frequency_value> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/fatigue_strength_at_cycle_limit_unit> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:decimal ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/fatigue_endurance_limit_value> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/pmd/co/fatiguetesting/AxisScaleValue> ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/sn_curve_y_axis_scale> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:decimal ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/mean_stress_value> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/fatigue_strength_at_cycle_limit_unit> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/test_temperature_descriptor> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/test_medium> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/test_frequency_range> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/ratio_r_descriptor> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/mean_stress_value> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/testing_standard> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:decimal ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/stress_concentration_factor_value> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/stress_concentration_factor_value> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/series_reference_from_text> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/pmd/co/fatiguetesting/LoadingTypeValue> ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/loading_type> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty <https://w3id.org/pmd/co/fatiguetesting/testing_standard> ] ;
+    skos:definition "Represents a single series of fatigue tests with testing parameters and results." ;
+    skos:inScheme <https://w3id.org/pmd/co/fatiguetesting> .
+
+<https://w3id.org/pmd/co/fatiguetesting/AxisScaleValue#linear> a owl:NamedIndividual,
+        <https://w3id.org/pmd/co/fatiguetesting/AxisScaleValue> ;
+    rdfs:label "linear" .
+
+<https://w3id.org/pmd/co/fatiguetesting/AxisScaleValue#logarithmic_base_10> a owl:NamedIndividual,
+        <https://w3id.org/pmd/co/fatiguetesting/AxisScaleValue> ;
+    rdfs:label "logarithmic_base_10" .
+
+<https://w3id.org/pmd/co/fatiguetesting/ControlTypeValue#displacement_controlled> a owl:NamedIndividual,
+        <https://w3id.org/pmd/co/fatiguetesting/ControlTypeValue> ;
+    rdfs:label "displacement_controlled" .
+
+<https://w3id.org/pmd/co/fatiguetesting/ControlTypeValue#force_controlled> a owl:NamedIndividual,
+        <https://w3id.org/pmd/co/fatiguetesting/ControlTypeValue> ;
+    rdfs:label "force_controlled" .
+
+<https://w3id.org/pmd/co/fatiguetesting/ControlTypeValue#strain_controlled> a owl:NamedIndividual,
+        <https://w3id.org/pmd/co/fatiguetesting/ControlTypeValue> ;
+    rdfs:label "strain_controlled" .
+
+<https://w3id.org/pmd/co/fatiguetesting/ControlTypeValue#unknown> a owl:NamedIndividual,
+        <https://w3id.org/pmd/co/fatiguetesting/ControlTypeValue> ;
+    rdfs:label "unknown" .
+
+<https://w3id.org/pmd/co/fatiguetesting/LoadingTypeValue#axial> a owl:NamedIndividual,
+        <https://w3id.org/pmd/co/fatiguetesting/LoadingTypeValue> ;
+    rdfs:label "axial" .
+
+<https://w3id.org/pmd/co/fatiguetesting/LoadingTypeValue#bending> a owl:NamedIndividual,
+        <https://w3id.org/pmd/co/fatiguetesting/LoadingTypeValue> ;
+    rdfs:label "bending" .
+
+<https://w3id.org/pmd/co/fatiguetesting/LoadingTypeValue#rotating_bending> a owl:NamedIndividual,
+        <https://w3id.org/pmd/co/fatiguetesting/LoadingTypeValue> ;
+    rdfs:label "rotating_bending" .
+
+<https://w3id.org/pmd/co/fatiguetesting/LoadingTypeValue#shearing> a owl:NamedIndividual,
+        <https://w3id.org/pmd/co/fatiguetesting/LoadingTypeValue> ;
+    rdfs:label "shearing" .
+
+<https://w3id.org/pmd/co/fatiguetesting/LoadingTypeValue#torsion> a owl:NamedIndividual,
+        <https://w3id.org/pmd/co/fatiguetesting/LoadingTypeValue> ;
+    rdfs:label "torsion" .
+
+<https://w3id.org/pmd/co/fatiguetesting/LoadingTypeValue#unknown> a owl:NamedIndividual,
+        <https://w3id.org/pmd/co/fatiguetesting/LoadingTypeValue> ;
+    rdfs:label "unknown" .
+
+<https://w3id.org/pmd/co/fatiguetesting/WaveformTypeValue#sinusoidal> a owl:NamedIndividual,
+        <https://w3id.org/pmd/co/fatiguetesting/WaveformTypeValue> ;
+    rdfs:label "sinusoidal" .
+
+<https://w3id.org/pmd/co/fatiguetesting/WaveformTypeValue#triangular> a owl:NamedIndividual,
+        <https://w3id.org/pmd/co/fatiguetesting/WaveformTypeValue> ;
+    rdfs:label "triangular" .
+
+<https://w3id.org/pmd/co/fatiguetesting/WaveformTypeValue#unknown> a owl:NamedIndividual,
+        <https://w3id.org/pmd/co/fatiguetesting/WaveformTypeValue> ;
+    rdfs:label "unknown" .
+
+<https://w3id.org/pmd/co/fatiguetesting/fatigue_test_series_list> a owl:ObjectProperty ;
+    rdfs:label "fatigue_test_series_list" ;
+    skos:definition "List of all fatigue test series." ;
+    skos:inScheme <https://w3id.org/pmd/co/fatiguetesting> .
+
+<https://w3id.org/pmd/co/fatiguetesting/control_type> a owl:ObjectProperty ;
+    rdfs:label "control_type" ;
+    rdfs:range <https://w3id.org/pmd/co/fatiguetesting/ControlTypeValue> ;
+    skos:definition """The variable that is controlled to remain constant during a fatigue test. Control types include strain_controlled, displacement_controlled  and force_controlled (also referred to as load-controlled or stress-controlled). If not explicitly stated, the control type can be inferred  based on the following criteria:  - 'strain_controlled' if a strain ratio value is defined or inferred.  - 'force_controlled' if a stress, or load/force ratio value is defined or inferred. - If any type of ultrasonic fatigue testing machine operating in the frequency range of 20 kHz +- 2 kHz is used, then 
+  the control type is typically 'displacement_controlled', although exceptions may exist.""" ;
+    skos:inScheme <https://w3id.org/pmd/co/fatiguetesting> .
+
+<https://w3id.org/pmd/co/fatiguetesting/cycle_limit_value> a owl:DatatypeProperty ;
+    rdfs:label "cycle_limit_value" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "The number of load cycles at which the test is stopped, and the specimen is considered a \"run-out\", meaning no  failure has occurred by the end of the test. If not explicitly stated, it can be inferred from the S-N (stress-life)  curve plot. If all run-out samples cluster around a particular number of cycles in the plot, that number can be  considered as the cycle_limit_value. The run-outs are typically represented with a rightward-pointing arrow in the plot." ;
+    skos:inScheme <https://w3id.org/pmd/co/fatiguetesting> .
+
+<https://w3id.org/pmd/co/fatiguetesting/failure_criterion> a owl:DatatypeProperty ;
+    rdfs:label "failure_criterion" ;
+    rdfs:range xsd:string ;
+    skos:definition "A failure criterion is a concise string that provides a threshold on whether a specimen is failed or not. For instance, in a load-controlled test, a load drop of 3 or 5% is used as an indication for the specimen being failed. Other times, a sample is only considered failed once complete rupture occurred. In resonance testing, often a relative resonance frequency drop is used as a failure criterion. Test stoppage at a predefined number of cycles, or run-outs, are not considered failure criteria." ;
+    skos:inScheme <https://w3id.org/pmd/co/fatiguetesting> .
+
+<https://w3id.org/pmd/co/fatiguetesting/fatigue_endurance_limit_unit> a owl:DatatypeProperty ;
+    rdfs:label "fatigue_endurance_limit_unit" ;
+    rdfs:range xsd:string ;
+    skos:definition "The unit in which the fatigue endurance limit is reported. MegaPascal (MPa), GigaPascal (GPa), or  kilopounds per square inch (ksi) are typical for fatigue testing." ;
+    skos:inScheme <https://w3id.org/pmd/co/fatiguetesting> .
+
+<https://w3id.org/pmd/co/fatiguetesting/fatigue_endurance_limit_value> a owl:DatatypeProperty ;
+    rdfs:label "fatigue_endurance_limit_value" ;
+    rdfs:range xsd:decimal ;
+    skos:definition """The fatigue endurance limit (or fatigue limit) is the maximum cyclic stress amplitude that a material can withstand without  failure, assuming an infinite number of load cycles. 
+This limit is characteristic of certain ferrous (iron-based) alloys—particularly those with a body-centered cubic (BCC)  crystal structure, such as carbon steels, low alloy steels, and ferritic or martensitic steels—as well as titanium  alloys. For these materials, the S-N curve typically levels off at low stress amplitudes, indicating that failure is  unlikely to occur below the endurance limit.
+In contrast, materials with a face-centered cubic (FCC) structure—such as austenitic steels, aluminum, and  copper—typically do not exhibit a distinct endurance limit. For these materials, even at small stress amplitudes,  failure will eventually occur after a large number of cycles. As a result, many studies refer to the fatigue strength  at a defined high cycle count (e.g., 10^6-10^7 cycles) as the "fatigue limit" or "endurance limit"; however, this is  technically the fatigue strength at the cycle limit, not a true endurance limit.
+The presence of test data showing that specimens survive well beyond an apparent knee point on the S-N curve can be  seen as a strong indicator for a true endurance limit to be existent.
+Note: If a 'fatigue_endurance_limit_value' exists, it must also be assigned as the 'fatigue_strength_at_cycle_limit_value'.""" ;
+    skos:inScheme <https://w3id.org/pmd/co/fatiguetesting> .
+
+<https://w3id.org/pmd/co/fatiguetesting/fatigue_strength_at_cycle_limit_unit> a owl:DatatypeProperty ;
+    rdfs:label "fatigue_strength_at_cycle_limit_unit" ;
+    rdfs:range xsd:string ;
+    skos:definition "The unit in which the fatigue strength at the cycle limit is reported. MegaPascal (MPa), GigaPascal (GPa), or  kilopounds per square inch (ksi) are typical for fatigue testing." ;
+    skos:inScheme <https://w3id.org/pmd/co/fatiguetesting> .
+
+<https://w3id.org/pmd/co/fatiguetesting/fatigue_strength_at_cycle_limit_value> a owl:DatatypeProperty ;
+    rdfs:label "fatigue_strength_at_cycle_limit_value" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fatigue strength at the cycle limit refers to the maximum cyclic stress amplitude a material can withstand for a predetermined  number of load cycles (the cycle limit) before failure occurs. For example, if a material has a fatigue strength of  200 MPa at 10^6 cycles, this means that when subjected to a cyclic stress of 200 MPa, the material is expected to fail  after approximately 10^6 cycles." ;
+    skos:inScheme <https://w3id.org/pmd/co/fatiguetesting> .
+
+<https://w3id.org/pmd/co/fatiguetesting/fatigue_testing_machine_class> a owl:DatatypeProperty ;
+    rdfs:label "fatigue_testing_machine_class" ;
+    rdfs:range xsd:string ;
+    skos:definition "The fatigue testing machine class refers to a concise, technical term that describes the type of fatigue testing machine based  solely on its functioning principle or core technology. Full equipment names, generic phrases, or unnecessary descriptors—for example,  \"fatigue testing machine\" should not appear in the class name. Examples include: \"resonance\", \"servo-hydraulic\", \"ultrasonic\",  \"piezoelectric ultrasonic\", \"rotating bending\", \"rotating bar two-point bending\", etc." ;
+    skos:inScheme <https://w3id.org/pmd/co/fatiguetesting> .
+
+<https://w3id.org/pmd/co/fatiguetesting/fatigue_testing_machine_name> a owl:DatatypeProperty ;
+    rdfs:label "fatigue_testing_machine_name" ;
+    rdfs:range xsd:string ;
+    skos:definition "A string identifier specifying the name or model of the machine used for conducting fatigue tests.  The name should exclude any descriptive phrases (e.g., 'fatigue testing machine') and focus solely on the brand, model,  and/or machine name. Any hyphenated or multi-part names should be preserved in their original format." ;
+    skos:inScheme <https://w3id.org/pmd/co/fatiguetesting> .
+
+<https://w3id.org/pmd/co/fatiguetesting/knee_point_value> a owl:DatatypeProperty ;
+    rdfs:label "knee_point_value" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "A knee point value is a unitless floating point number which represents the approximate cycle number at which the  SN-curve changes its slope. Depending on the type of the SN-curve model, one or several knee points exist, where the  SN curve changes its slope. Here, the first knee point is addressed and absence of a second knee point, often caused  by defects such as inclusions, is assumed. For largely defect-free ferritic steels, there is usually a constant, non-zero slope of the SN-curve in the high cycle fatigue regime (e.g. 10^4 < n < 10^6), followed by a horizontal shape of the SN-curve  after reaching the fatigue limit/endurance limit. In this case the knee point represents the transition to infinite life.  For other materials (e.g. aluminium or austenitic steels), a horizontal slope is never reached, but there are at  least two regions with different slopes, which are separated by the knee point." ;
+    skos:inScheme <https://w3id.org/pmd/co/fatiguetesting> .
+
+<https://w3id.org/pmd/co/fatiguetesting/loading_type> a owl:ObjectProperty ;
+    rdfs:label "loading_type" ;
+    rdfs:range <https://w3id.org/pmd/co/fatiguetesting/LoadingTypeValue> ;
+    skos:definition """A string/categorical variable that identifies the type of loading applied during a fatigue test. Some well-known loading conditions include:
+  - axial or push-pull loading (tension-tension, compression-compression, or tension-compression are special cases of axial loading)
+  - bending or flexural loading
+  - torsional or twist loading
+  - rotating bending loading
+  - shear loading
+If any type of ultrasonic fatigue testing machine operating in the frequency range of 20 kHz +- 2 kHz is used, then the loading type is  typically 'axial', although exceptions may exist.""" ;
+    skos:inScheme <https://w3id.org/pmd/co/fatiguetesting> .
+
+<https://w3id.org/pmd/co/fatiguetesting/mean_stress_unit> a owl:DatatypeProperty ;
+    rdfs:label "mean_stress_unit" ;
+    rdfs:range xsd:string ;
+    skos:definition "The unit of the mean stress S_m. MegaPascal (MPa), GigaPascal (GPa), or kilopounds per square inch (ksi) are typical  for fatigue testing. If the mean stress value is inferred as 0, its unit can be assumed to align with the units used for other reported  stress values in the context." ;
+    skos:inScheme <https://w3id.org/pmd/co/fatiguetesting> .
+
+<https://w3id.org/pmd/co/fatiguetesting/mean_stress_value> a owl:DatatypeProperty ;
+    rdfs:label "mean_stress_value" ;
+    rdfs:range xsd:decimal ;
+    skos:definition """The mean stress S_m is the averaged value of the mechanical stresses during fatigue testing (S_m = (S_min + S_max)/2).
+Inference Notes: - If the ratio_r_value is -1 and the control type is 'force_controlled', then the mean stress value is always 0. - If the ratio_r_value is -1 and the control type is 'strain_controlled', then the mean stress value cannot be inferred
+  without additional context.""" ;
+    skos:inScheme <https://w3id.org/pmd/co/fatiguetesting> .
+
+<https://w3id.org/pmd/co/fatiguetesting/ratio_r_descriptor> a owl:DatatypeProperty ;
+    rdfs:label "ratio_r_descriptor" ;
+    rdfs:range xsd:string ;
+    skos:definition """A brief, textual description of the loading condition corresponding to the ratio_r_value. Examples include: "tension-tension", "pulsating", "partly reversed tension-compression",  "fully-reversed", "partly reversed compression", "compression pulsating" , "compression-compression", etc.
+If a descriptor is provided that clearly maps to a known ratio_r_value (i.e, "fully-reversed" implies  ratio_r_value = -1 and "pulsating" implies ratio_r_value = 0), the corresponding numerical value for ratio_r_value  can be inferred.""" ;
+    skos:inScheme <https://w3id.org/pmd/co/fatiguetesting> .
+
+<https://w3id.org/pmd/co/fatiguetesting/ratio_r_value> a owl:DatatypeProperty ;
+    rdfs:label "ratio_r_value" ;
+    rdfs:range xsd:decimal ;
+    skos:definition """A unitless floating point number that represents the ratio of minimum to maximum within a cycle of a loading waveform.  The loading waveform constrains a single physical quantity — either stress, strain, or load/force. The ratio must not  mix quantities (e.g., stress and strain), and should be interpreted as one of:
+  - Stress Ratio: R = S_min / S_max
+  - Strain Ratio: R =  e_min / e_max
+  - Load/Force Ratio: R = F_min / F_max
+
+Inference Notes: - If the mean stress value is 0, then the ratio_r_value is always -1 (i.e., the stress ratio is -1), and if additionally 
+  no ultrasonic fatigue testing machine of any type operating in the frequency range of 20 kHz +- 2 kHz is used, then 
+  the control type is 'force_controlled'.
+
+- If any type of ultrasonic fatigue testing machine operating in the frequency range of 20 kHz +- 2 kHz is used, 
+  then the ratio_r_value is typically -1, although exceptions may exist.
+
+- If the loading_type is 'rotating_bending', then the ratio_r_value is always -1.""" ;
+    skos:inScheme <https://w3id.org/pmd/co/fatiguetesting> .
+
+<https://w3id.org/pmd/co/fatiguetesting/series_reference_from_image> a owl:DatatypeProperty ;
+    rdfs:label "series_reference_from_image" ;
+    rdfs:range xsd:string ;
+    skos:definition """A string identifier (or label) uniquely representing a single fatigue test series depicted in an image containing an  S-N (stress-life) or e-N (strain-life) diagram. An S-N diagram plots stress against the number of cycles to failure,  while an e-N diagram plots strain against the number of cycles to failure.
+The legend in the image is the primary source for determining this identifier. If the legend alone does not provide a  unique label for the series, additional details from the caption and/or other image elements should be used to  distinguish it. Only experimentally obtained data series are considered, while fitted lines, theoretical or model-based  curves, and data from external publications included for comparison are ignored. Runouts are not considered a separate  label. Additionally, failure/fracture origins (e.g., surface, inclusion, grain boundary) are ignored, and only the  primary test series label is used. If symbols are present in an identified label, they are converted to LaTeX math  notation (enclosed in $...$), except for the degree Celsius (°C). Plots containing curves, such as stress response,  strain response, stress-strain behavior, crack initiation, crack length, and crack growth, should not be used to  generate this label. The extracted label should be concise yet sufficient to uniquely identify its corresponding series.""" ;
+    skos:inScheme <https://w3id.org/pmd/co/fatiguetesting> .
+
+<https://w3id.org/pmd/co/fatiguetesting/series_reference_from_text> a owl:DatatypeProperty ;
+    rdfs:label "series_reference_from_text" ;
+    rdfs:range xsd:string ;
+    skos:definition """A string identifier (or label) uniquely representing a single fatigue test series, as referenced explicitly in the narrative text.  This identifier should correspond to a series for which experimentally obtained data is presented in the form of an S-N (stress-life)  or e-N (strain-life) curve. An S-N diagram plots stress against the number of cycles to failure, while an e-N diagram  plots strain against the number of cycles to failure.
+The reference must match the way the series is cited in the text, particularly in contexts discussing fatigue behavior,  or results from fatigue tests. Avoid references to theoretical, or model-based series, as well as those from external publications  used for comparison. This label should correspond to the same test series as one identified by series_reference_from_image, though  phrasing may differ.
+If symbols are present in an identified label, they are converted to LaTeX math notation (enclosed in $...$), except for degree  Celsius (°C). The extracted label should be concise yet sufficient to uniquely identify its corresponding test series as cited  in the text.""" ;
+    skos:inScheme <https://w3id.org/pmd/co/fatiguetesting> .
+
+<https://w3id.org/pmd/co/fatiguetesting/sn_curve_slope_value> a owl:DatatypeProperty ;
+    rdfs:label "sn_curve_slope_value" ;
+    rdfs:range xsd:decimal ;
+    skos:definition """The SN-curve slope value is a floating point number which represents the slope of the SN-curve in the  high cycle fatigue (HCF)/finite life regime. High cycle fatigue is the range of fatigue life Nf between 10^4 and approximately  10^6 cycles (depending on the material). The sn_curve_slope_value represents the value of m in the linearized log-log  form logS = m*logN + c, capturing the gradient of the line in a stress (log) versus cycle (log) fatigue plot.
+The slope value can be inferred from related fatigue equations, which may require conversion to align with the  standard linearized form above. Common forms include:
+  - Basquin equation:
+    Defined as S = Sf*(2Nf)^m. In this form, the fatigue strength exponent m is directly equivalent to the sn_curve_slope_value.
+
+  - Modified Basquin form:
+    Typically written as Nf = A*S^m, where fatigue life is expressed as a function of stress raised to a power. 
+    Since this form is the inverse of the standard SN-curve format, the sn_curve_slope_value is obtained by computing 1/m.
+
+  - A rearranged form of the standard equation, expressed as logN + m*logS = C. To align with the standard form, 
+    the sn_curve_slope_value is calculated as -1/m.
+
+  - In formulations where m is defined as the inverse slope of the SN-curve, the sn_curve_slope_value is determined as -1/m.
+   
+Note: These are some of the common representations, but other forms may exist depending on the context or source. When the  value is inferred based on these formulations, it should be expressed with a precision of up to 6 decimal places.""" ;
+    skos:inScheme <https://w3id.org/pmd/co/fatiguetesting> .
+
+<https://w3id.org/pmd/co/fatiguetesting/sn_curve_x_axis_label> a owl:DatatypeProperty ;
+    rdfs:label "sn_curve_x_axis_label" ;
+    rdfs:range xsd:string ;
+    skos:definition "The label for the X-axis of the S-N (stress-life) or e-N (strain-life) curve plot, typically representing either  the number of load cycles to failure or the logarithm of the number of cycles." ;
+    skos:inScheme <https://w3id.org/pmd/co/fatiguetesting> .
+
+<https://w3id.org/pmd/co/fatiguetesting/sn_curve_x_axis_scale> a owl:ObjectProperty ;
+    rdfs:label "sn_curve_x_axis_scale" ;
+    rdfs:range <https://w3id.org/pmd/co/fatiguetesting/AxisScaleValue> ;
+    skos:definition "Specifies the scale of the X-axis for the S-N (stress-life) or e-N (strain-life) curve plot. The scale can be linear,  with equal spacing between the ticks, or logarithmic, characterized by uneven spacing between the ticks, especially at  higher values." ;
+    skos:inScheme <https://w3id.org/pmd/co/fatiguetesting> .
+
+<https://w3id.org/pmd/co/fatiguetesting/sn_curve_y_axis_label> a owl:DatatypeProperty ;
+    rdfs:label "sn_curve_y_axis_label" ;
+    rdfs:range xsd:string ;
+    skos:definition "The label for the Y-axis of the S-N (stress-life) or e-N (strain-life) curve plot, typically representing either  the stress amplitude or range (for S-N) or strain amplitude or range (for e-N)." ;
+    skos:inScheme <https://w3id.org/pmd/co/fatiguetesting> .
+
+<https://w3id.org/pmd/co/fatiguetesting/sn_curve_y_axis_scale> a owl:ObjectProperty ;
+    rdfs:label "sn_curve_y_axis_scale" ;
+    rdfs:range <https://w3id.org/pmd/co/fatiguetesting/AxisScaleValue> ;
+    skos:definition "Specifies the scale of the Y-axis for the S-N (stress-life) or e-N (strain-life) curve plot. The scale can be linear,  with equal spacing between the ticks, or logarithmic, characterized by uneven spacing between the ticks, especially at  higher values." ;
+    skos:inScheme <https://w3id.org/pmd/co/fatiguetesting> .
+
+<https://w3id.org/pmd/co/fatiguetesting/stress_concentration_factor_value> a owl:DatatypeProperty ;
+    rdfs:label "stress_concentration_factor_value" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "The stress concentration factor K_t is a unitless float variable which expresses the ratio of the highest stress  (dictated by a present notch) to a nominal far-field stress of the cross section (K_t = S_max/S_nominal)." ;
+    skos:inScheme <https://w3id.org/pmd/co/fatiguetesting> .
+
+<https://w3id.org/pmd/co/fatiguetesting/test_frequency_range> a owl:DatatypeProperty ;
+    rdfs:label "test_frequency_range" ;
+    rdfs:range xsd:string ;
+    skos:definition "The testing frequency range for the fatigue test must always be expressed as a range without units, such as '15-20'. If a  nominal frequency with tolerance is specified (e.g., '10 kHz +- 500 Hz'), the tolerance is first converted to match the unit  of the nominal frequency, and then the value is expressed as a unitless range (e.g., '9.5-10.5'). The two values in the range  must be different; identical values (e.g., '20-20') are not valid." ;
+    skos:inScheme <https://w3id.org/pmd/co/fatiguetesting> .
+
+<https://w3id.org/pmd/co/fatiguetesting/test_frequency_unit> a owl:DatatypeProperty ;
+    rdfs:label "test_frequency_unit" ;
+    rdfs:range xsd:string ;
+    skos:definition "The unit in which the testing frequency is reported. Common examples include Hertz (Hz), Kilohertz (kHz), or revolutions per minute (rpm)." ;
+    skos:inScheme <https://w3id.org/pmd/co/fatiguetesting> .
+
+<https://w3id.org/pmd/co/fatiguetesting/test_frequency_value> a owl:DatatypeProperty ;
+    rdfs:label "test_frequency_value" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "The testing frequency value indicates how many loading cycles the sample experiences within a second during a fatigue test." ;
+    skos:inScheme <https://w3id.org/pmd/co/fatiguetesting> .
+
+<https://w3id.org/pmd/co/fatiguetesting/test_medium> a owl:DatatypeProperty ;
+    rdfs:label "test_medium" ;
+    rdfs:range xsd:string ;
+    skos:definition "A string that represents the medium (e.g., air, nitrogen, hydrogen, vacuum, liquid substances, etc.) in which a  measurement has been carried out during fatigue testing. Descriptors that specify the type or source of the medium  (e.g., \"laboratory air\", \"liquid nitrogen\", etc.) are allowed, but unrelated conditions such as temperature (e.g.,  \"room temperature\") are not allowed in this field. If applicable, relevant characteristics of the medium such as humidity,  partial gas pressure, or vacuum level should be incorporated into this string." ;
+    skos:inScheme <https://w3id.org/pmd/co/fatiguetesting> .
+
+<https://w3id.org/pmd/co/fatiguetesting/test_temperature_descriptor> a owl:DatatypeProperty ;
+    rdfs:label "test_temperature_descriptor" ;
+    rdfs:range xsd:string ;
+    skos:definition "The test temperature descriptor is a rather vague string description of the temperature under which a test is  being performed, e.g. ambient room temperature." ;
+    skos:inScheme <https://w3id.org/pmd/co/fatiguetesting> .
+
+<https://w3id.org/pmd/co/fatiguetesting/test_temperature_unit> a owl:DatatypeProperty ;
+    rdfs:label "test_temperature_unit" ;
+    rdfs:range xsd:string ;
+    skos:definition "The unit in which the test temperature is reported. Standard unit of temperature in the International System of  Units (SI) is Kelvin (K) but it is also commonly reported in degree Celsius (°C)." ;
+    skos:inScheme <https://w3id.org/pmd/co/fatiguetesting> .
+
+<https://w3id.org/pmd/co/fatiguetesting/test_temperature_value> a owl:DatatypeProperty ;
+    rdfs:label "test_temperature_value" ;
+    rdfs:range xsd:decimal ;
+    skos:definition """The testing temperature value refers to the temperature at which the fatigue test is actively conducted. This value characterizes  either the temperature of the sample under test or the temperature of the surrounding testing medium. It can either be a nominal or  a measured estimation. The temperature value measures the average kinetic energy of the particles (atoms or molecules) in the sample  under fatigue test.
+The following are strictly not considered for the testing temperature:
+  - Temperatures from specimen self-heating or test-induced effects
+  - Temperatures mentioned in the context of processes such as:
+    - Coating, plating, or deposition processes (e.g., PVD, CVD)
+    - Thermal treatments (e.g., annealing, ageing, quenching)
+    - Pre-test conditioning steps
+    - Post-test procedures or analyses
+
+Ambiguous references such as "room temperature" are not treated as valid numerical values unless a value  (e.g., 20°C, 25°C, or 298 K) is explicitly provided alongside.""" ;
+    skos:inScheme <https://w3id.org/pmd/co/fatiguetesting> .
+
+<https://w3id.org/pmd/co/fatiguetesting/testing_standard> a owl:DatatypeProperty ;
+    rdfs:label "testing_standard" ;
+    rdfs:range xsd:string ;
+    skos:definition "A testing standard specifies the exact testing procedure followed during fatigue testing as proposed by a standardization body  (ASTM, ISO, DIN, ...). However, standards referenced solely for the design, preparation, or manufacturing of fatigue test specimens do  not qualify, unless it is clearly stated that the standard was followed during the fatigue test procedure itself." ;
+    skos:inScheme <https://w3id.org/pmd/co/fatiguetesting> .
+
+<https://w3id.org/pmd/co/fatiguetesting/waveform_type> a owl:ObjectProperty ;
+    rdfs:label "waveform_type" ;
+    rdfs:range <https://w3id.org/pmd/co/fatiguetesting/WaveformTypeValue> ;
+    skos:definition "A waveform type in the context of a fatigue test is a string/categorical variable which describes the shape of the  mechanical actuation signal (load). If any type of ultrasonic or resonance-based fatigue testing machine is used, then the waveform type is always 'sinusoidal'." ;
+    skos:inScheme <https://w3id.org/pmd/co/fatiguetesting> .
+
+<https://w3id.org/pmd/co/fatiguetesting/WaveformTypeValue> a owl:Class ;
+    owl:oneOf ( <https://w3id.org/pmd/co/fatiguetesting/WaveformTypeValue#sinusoidal> <https://w3id.org/pmd/co/fatiguetesting/WaveformTypeValue#triangular> <https://w3id.org/pmd/co/fatiguetesting/WaveformTypeValue#unknown> ) ;
+    linkml:permissible_values <https://w3id.org/pmd/co/fatiguetesting/WaveformTypeValue#sinusoidal>,
+        <https://w3id.org/pmd/co/fatiguetesting/WaveformTypeValue#triangular>,
+        <https://w3id.org/pmd/co/fatiguetesting/WaveformTypeValue#unknown> .
+
+<https://w3id.org/pmd/co/fatiguetesting/AxisScaleValue> a owl:Class ;
+    owl:oneOf ( <https://w3id.org/pmd/co/fatiguetesting/AxisScaleValue#linear> <https://w3id.org/pmd/co/fatiguetesting/AxisScaleValue#logarithmic_base_10> ) ;
+    linkml:permissible_values <https://w3id.org/pmd/co/fatiguetesting/AxisScaleValue#linear>,
+        <https://w3id.org/pmd/co/fatiguetesting/AxisScaleValue#logarithmic_base_10> .
+
+<https://w3id.org/pmd/co/fatiguetesting/ControlTypeValue> a owl:Class ;
+    owl:oneOf ( <https://w3id.org/pmd/co/fatiguetesting/ControlTypeValue#strain_controlled> <https://w3id.org/pmd/co/fatiguetesting/ControlTypeValue#force_controlled> <https://w3id.org/pmd/co/fatiguetesting/ControlTypeValue#displacement_controlled> <https://w3id.org/pmd/co/fatiguetesting/ControlTypeValue#unknown> ) ;
+    linkml:permissible_values <https://w3id.org/pmd/co/fatiguetesting/ControlTypeValue#displacement_controlled>,
+        <https://w3id.org/pmd/co/fatiguetesting/ControlTypeValue#force_controlled>,
+        <https://w3id.org/pmd/co/fatiguetesting/ControlTypeValue#strain_controlled>,
+        <https://w3id.org/pmd/co/fatiguetesting/ControlTypeValue#unknown> .
+
+<https://w3id.org/pmd/co/fatiguetesting/LoadingTypeValue> a owl:Class ;
+    owl:oneOf ( <https://w3id.org/pmd/co/fatiguetesting/LoadingTypeValue#axial> <https://w3id.org/pmd/co/fatiguetesting/LoadingTypeValue#bending> <https://w3id.org/pmd/co/fatiguetesting/LoadingTypeValue#rotating_bending> <https://w3id.org/pmd/co/fatiguetesting/LoadingTypeValue#shearing> <https://w3id.org/pmd/co/fatiguetesting/LoadingTypeValue#torsion> <https://w3id.org/pmd/co/fatiguetesting/LoadingTypeValue#unknown> ) ;
+    linkml:permissible_values <https://w3id.org/pmd/co/fatiguetesting/LoadingTypeValue#axial>,
+        <https://w3id.org/pmd/co/fatiguetesting/LoadingTypeValue#bending>,
+        <https://w3id.org/pmd/co/fatiguetesting/LoadingTypeValue#rotating_bending>,
+        <https://w3id.org/pmd/co/fatiguetesting/LoadingTypeValue#shearing>,
+        <https://w3id.org/pmd/co/fatiguetesting/LoadingTypeValue#torsion>,
+        <https://w3id.org/pmd/co/fatiguetesting/LoadingTypeValue#unknown> .
+
+
