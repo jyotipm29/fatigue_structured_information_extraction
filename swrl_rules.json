@@ -1,0 +1,112 @@
+[   
+    {
+        "rule_str": "fatigue_testing_machine_class(?x, ?val) ^ contains(?val, 'ultrasonic') ^ test_frequency_unit(?x, 'hz') ^ test_frequency_value(?x, ?freq) ^ greaterThanOrEqual(?freq, 18000.0) ^ lessThanOrEqual(?freq, 22000.0) -> loading_type(?x, LoadingTypeValue#axial)",
+        "target_attribute": "loading_type",
+        "error_message": "If any type of 'ultrasonic' fatigue testing machine operating in the frequency range of 20 kHz +- 2 kHz is used, then loading_type is typically 'axial', although exceptions may exist."
+    },
+    {
+        "rule_str": "fatigue_testing_machine_class(?x, ?val) ^ contains(?val, 'ultrasonic') ^ test_frequency_unit(?x, 'khz') ^ test_frequency_value(?x, ?freq) ^ greaterThanOrEqual(?freq, 18.0) ^ lessThanOrEqual(?freq, 22.0) -> loading_type(?x, LoadingTypeValue#axial)",
+        "target_attribute": "loading_type",
+        "error_message": "If any type of 'ultrasonic' fatigue testing machine operating in the frequency range of 20 kHz +- 2 kHz is used, then loading_type is typically 'axial', although exceptions may exist."
+    },
+    {
+        "rule_str": "fatigue_testing_machine_class(?x, ?val) ^ contains(?val, 'ultrasonic') ^ test_frequency_unit(?x, 'hz') ^ test_frequency_value(?x, ?freq) ^ greaterThanOrEqual(?freq, 18000.0) ^ lessThanOrEqual(?freq, 22000.0) -> ratio_r_value(?x, -1.0)",
+        "target_attribute": "ratio_r_value",
+        "error_message": "If any type of 'ultrasonic' fatigue testing machine operating in the frequency range of 20 kHz +- 2 kHz is used, then ratio_r_value is typically '-1.0', although exceptions may exist."
+    },
+    {
+        "rule_str": "fatigue_testing_machine_class(?x, ?val) ^ contains(?val, 'ultrasonic') ^ test_frequency_unit(?x, 'khz') ^ test_frequency_value(?x, ?freq) ^ greaterThanOrEqual(?freq, 18.0) ^ lessThanOrEqual(?freq, 22.0) -> ratio_r_value(?x, -1.0)",
+        "target_attribute": "ratio_r_value",
+        "error_message": "If any type of 'ultrasonic' fatigue testing machine operating in the frequency range of 20 kHz +- 2 kHz is used, then ratio_r_value is typically '-1.0', although exceptions may exist."
+    },
+    {
+        "rule_str": "fatigue_testing_machine_class(?x, ?val) ^ contains(?val, 'ultrasonic') ^ test_frequency_unit(?x, 'hz') ^ test_frequency_value(?x, ?freq) ^ greaterThanOrEqual(?freq, 18000.0) ^ lessThanOrEqual(?freq, 22000.0) -> ratio_r_descriptor(?x, 'fully-reversed')",
+        "target_attribute": "ratio_r_descriptor",
+        "error_message": "If any type of 'ultrasonic' fatigue testing machine operating in the frequency range of 20 kHz +- 2 kHz is used, then ratio_r_descriptor is typically 'fully-reversed', although exceptions may exist."
+    },
+    {
+        "rule_str": "fatigue_testing_machine_class(?x, ?val) ^ contains(?val, 'ultrasonic') ^ test_frequency_unit(?x, 'khz') ^ test_frequency_value(?x, ?freq) ^ greaterThanOrEqual(?freq, 18.0) ^ lessThanOrEqual(?freq, 22.0) -> ratio_r_descriptor(?x, 'fully-reversed')",
+        "target_attribute": "ratio_r_descriptor",
+        "error_message": "If any type of 'ultrasonic' fatigue testing machine operating in the frequency range of 20 kHz +- 2 kHz is used, then ratio_r_descriptor is typically 'fully-reversed', although exceptions may exist."
+    },
+    {
+        "rule_str": "fatigue_testing_machine_class(?x, ?val) ^ contains(?val, 'ultrasonic') ^ test_frequency_unit(?x, 'hz') ^ test_frequency_value(?x, ?freq) ^ greaterThanOrEqual(?freq, 18000.0) ^ lessThanOrEqual(?freq, 22000.0) -> control_type(?x, ControlTypeValue#displacement_controlled)",
+        "target_attribute": "control_type",
+        "error_message": "If any type of 'ultrasonic' fatigue testing machine operating in the frequency range of 20 kHz +- 2 kHz is used, then control_type is typically 'displacement_controlled', although exceptions may exist."
+    },
+    {
+        "rule_str": "fatigue_testing_machine_class(?x, ?val) ^ contains(?val, 'ultrasonic') ^ test_frequency_unit(?x, 'khz') ^ test_frequency_value(?x, ?freq) ^ greaterThanOrEqual(?freq, 18.0) ^ lessThanOrEqual(?freq, 22.0) -> control_type(?x, ControlTypeValue#displacement_controlled)",
+        "target_attribute": "control_type",
+        "error_message": "If any type of 'ultrasonic' fatigue testing machine operating in the frequency range of 20 kHz +- 2 kHz is used, then control_type is typically 'displacement_controlled', although exceptions may exist."
+    },
+    {
+        "rule_str": "fatigue_testing_machine_class(?x, ?val) ^ contains(?val, 'ultrasonic') -> waveform_type(?x, WaveformTypeValue#sinusoidal)",
+        "target_attribute": "waveform_type",
+        "error_message": "If any type of 'ultrasonic' fatigue testing machine is used, then waveform_type must be 'sinusoidal'."
+    },
+    {
+        "rule_str": "fatigue_testing_machine_class(?x, ?val) ^ contains(?val, 'resonance') -> waveform_type(?x, WaveformTypeValue#sinusoidal)",
+        "target_attribute": "waveform_type",
+        "error_message": "If any type of 'resonance' fatigue testing machine is used, then waveform_type must be 'sinusoidal'."
+    },
+    {
+        "rule_str": "control_type(?x, ControlTypeValue#force_controlled) ^ ratio_r_value(?x, -1.0) -> mean_stress_value(?x, 0.0)",
+        "target_attribute": "mean_stress_value",
+        "error_message": "If control_type is 'force_controlled' and ratio_r_value is '-1.0', then mean_stress_value must be '0.0'."
+    },
+    {
+        "rule_str": "control_type(?x, ControlTypeValue#force_controlled) ^ ratio_r_descriptor(?x, 'fully-reversed') -> mean_stress_value(?x, 0.0)",
+        "target_attribute": "mean_stress_value",
+        "error_message": "If control_type is 'force_controlled' and ratio_r_descriptor is 'fully-reversed', then mean_stress_value must be '0.0'."
+    },
+    {
+        "rule_str": "mean_stress_value(?x, 0.0) -> ratio_r_value(?x, -1.0)",
+        "target_attribute": "ratio_r_value",
+        "error_message": "If mean_stress_value is '0.0', then ratio_r_value must be '-1.0'."
+    },
+    {
+        "rule_str": "mean_stress_value(?x, 0.0) -> ratio_r_descriptor(?x, 'fully-reversed')",
+        "target_attribute": "ratio_r_descriptor",
+        "error_message": "If mean_stress_value is '0.0', then ratio_r_descriptor must be 'fully-reversed'."
+    },
+    {
+        "rule_str": "loading_type(?x, LoadingTypeValue#rotating_bending) -> ratio_r_value(?x, -1.0)",
+        "target_attribute": "ratio_r_value",
+        "error_message": "If loading_type is 'rotating_bending', then ratio_r_value must be '-1.0'."
+    },
+    {
+        "rule_str": "loading_type(?x, LoadingTypeValue#rotating_bending) -> ratio_r_descriptor(?x, 'fully-reversed')",
+        "target_attribute": "ratio_r_descriptor",
+        "error_message": "If loading_type is 'rotating_bending', then ratio_r_descriptor must be 'fully-reversed'."
+    },
+    {
+        "rule_str": "ratio_r_value(?x, -1.0) -> ratio_r_descriptor(?x, 'fully-reversed')",
+        "target_attribute": "ratio_r_descriptor",
+        "error_message": "If ratio_r_value is '-1.0', then ratio_r_descriptor must be 'fully-reversed'."
+    },
+    {
+        "rule_str": "ratio_r_descriptor(?x, 'fully-reversed') -> ratio_r_value(?x, -1.0)",
+        "target_attribute": "ratio_r_value",
+        "error_message": "If ratio_r_descriptor is 'fully-reversed', then ratio_r_value must be '-1.0'."
+    },
+    {
+        "rule_str": "ratio_r_value(?x, 0.0) -> ratio_r_descriptor(?x, 'pulsating')",
+        "target_attribute": "ratio_r_descriptor",
+        "error_message": "If ratio_r_value is '0.0', then ratio_r_descriptor must be 'pulsating'."
+    },
+    {
+        "rule_str": "ratio_r_descriptor(?x, 'pulsating') -> ratio_r_value(?x, 0.0)",
+        "target_attribute": "ratio_r_value",
+        "error_message": "If ratio_r_descriptor is 'pulsating', then ratio_r_value must be '0.0'."
+    },
+    {
+        "rule_str": "NegativeInfinity(?c) ^ has_value(?c, ?neg_inf) ^ fatigue_endurance_limit_value(?x, ?v) ^ notEqual(?v, ?neg_inf) -> fatigue_strength_at_cycle_limit_value(?x, ?v)",
+        "target_attribute": "fatigue_strength_at_cycle_limit_value",
+        "error_message": "If a fatigue_endurance_limit_value exists, it must also be assigned as the fatigue_strength_at_cycle_limit_value."
+    },
+    {
+        "rule_str": "fatigue_endurance_limit_unit(?x, ?u) ^ notEqual(?u, 'unknown') -> fatigue_strength_at_cycle_limit_unit(?x, ?u)",
+        "target_attribute": "fatigue_strength_at_cycle_limit_unit",
+        "error_message": "If a fatigue_endurance_limit_unit exists, it must also be assigned as the fatigue_strength_at_cycle_limit_unit."
+    }
+]

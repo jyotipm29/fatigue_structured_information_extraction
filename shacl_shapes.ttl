@@ -1,0 +1,134 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix ft: <https://w3id.org/pmd/co/fatiguetesting/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+
+################################################################################################################################################
+# RULE 1-6: If a value is set (not -1e+300), its corresponding unit must not be 'unknown', and vice versa.
+################################################################################################################################################
+
+ft:FrequencyValueRangeUnitConstraintShape
+    a sh:NodeShape ;
+    sh:targetClass ft:FatigueTestSeries ;
+    sh:sparql [
+        a sh:SPARQLConstraint ;
+        sh:message "If test_frequency_value is not '-1e+300' or test_frequency_range is not 'unknown', test_frequency_unit must not be 'unknown'. Conversely, if test_frequency_value is '-1e+300' and test_frequency_range is 'unknown', test_frequency_unit must be 'unknown'." ;
+        sh:select """
+            PREFIX ft: <https://w3id.org/pmd/co/fatiguetesting/>
+            SELECT ?this WHERE {
+                ?this ft:test_frequency_value ?val ;
+                      ft:test_frequency_range ?range ;
+                      ft:test_frequency_unit ?unit .
+                FILTER (
+                    (?val != "-1e+300"^^xsd:double && ?range != "unknown"^^xsd:string && ?unit = "unknown"^^xsd:string) ||
+                    (?val != "-1e+300"^^xsd:double && ?range = "unknown"^^xsd:string && ?unit = "unknown"^^xsd:string) ||
+                    (?val = "-1e+300"^^xsd:double && ?range != "unknown"^^xsd:string && ?unit = "unknown"^^xsd:string) ||
+                    (?val = "-1e+300"^^xsd:double && ?range = "unknown"^^xsd:string && ?unit != "unknown"^^xsd:string)
+                )
+            }
+        """ ;
+    ] .
+
+ft:TemperatureValueUnitConstraintShape
+    a sh:NodeShape ;
+    sh:targetClass ft:FatigueTestSeries ;
+    sh:sparql [
+        a sh:SPARQLConstraint ;
+        sh:message "If test_temperature_value is not '-1e+300', then test_temperature_unit must not be 'unknown', and vice versa." ;
+        sh:select """
+            PREFIX ft: <https://w3id.org/pmd/co/fatiguetesting/>
+            SELECT ?this WHERE {
+                ?this ft:test_temperature_value ?val ;
+                      ft:test_temperature_unit ?unit .
+                FILTER (
+                    (?val != "-1e+300"^^xsd:double && ?unit = "unknown"^^xsd:string) ||
+                    (?val = "-1e+300"^^xsd:double && ?unit != "unknown"^^xsd:string)
+                )
+            }
+        """ ;
+    ] .
+
+ft:MeanStressValueUnitConstraintShape
+    a sh:NodeShape ;
+    sh:targetClass ft:FatigueTestSeries ;
+    sh:sparql [
+        a sh:SPARQLConstraint ;
+        sh:message "If mean_stress_value is not '-1e+300', then mean_stress_unit must not be 'unknown', and vice versa." ;
+        sh:select """
+            PREFIX ft: <https://w3id.org/pmd/co/fatiguetesting/>
+            SELECT ?this WHERE {
+                ?this ft:mean_stress_value ?val ;
+                      ft:mean_stress_unit ?unit .
+                FILTER (
+                    (?val != "-1e+300"^^xsd:double && ?unit = "unknown"^^xsd:string) ||
+                    (?val = "-1e+300"^^xsd:double && ?unit != "unknown"^^xsd:string)
+                )
+            }
+        """ ;
+    ] .
+
+ft:FatigueStrengthAtCycleLimitValueUnitConstraintShape
+    a sh:NodeShape ;
+    sh:targetClass ft:FatigueTestSeries ;
+    sh:sparql [
+        a sh:SPARQLConstraint ;
+        sh:message "If fatigue_strength_at_cycle_limit_value is not '-1e+300', then fatigue_strength_at_cycle_limit_value_unit must not be 'unknown', and vice versa." ;
+        sh:select """
+            PREFIX ft: <https://w3id.org/pmd/co/fatiguetesting/>
+            SELECT ?this WHERE {
+                ?this ft:fatigue_strength_at_cycle_limit_value ?val ;
+                      ft:fatigue_strength_at_cycle_limit_unit ?unit .
+                FILTER (
+                    (?val != "-1e+300"^^xsd:double && ?unit = "unknown"^^xsd:string) ||
+                    (?val = "-1e+300"^^xsd:double && ?unit != "unknown"^^xsd:string)
+                )
+            }
+        """ ;
+    ] .
+
+ft:fatigue_endurance_limit_valueUnitConstraintShape
+    a sh:NodeShape ;
+    sh:targetClass ft:FatigueTestSeries ;
+    sh:sparql [
+        a sh:SPARQLConstraint ;
+        sh:message "If fatigue_endurance_limit_value is not '-1e+300', then fatigue_endurance_limit_unit must not be 'unknown', and vice versa." ;
+        sh:select """
+            PREFIX ft: <https://w3id.org/pmd/co/fatiguetesting/>
+            SELECT ?this WHERE {
+                ?this ft:fatigue_endurance_limit_value ?val ;
+                      ft:fatigue_endurance_limit_unit ?unit .
+                FILTER (
+                    (?val != "-1e+300"^^xsd:double && ?unit = "unknown"^^xsd:string) ||
+                    (?val = "-1e+300"^^xsd:double && ?unit != "unknown"^^xsd:string)
+                )
+            }
+        """ ;
+    ] .
+
+
+################################################################################################################################################
+# RULE 7: If mean_stress_value is 0.0 and fatigue_testing_machine_class is not 'ultrasonic', then control_type should be 'force_controlled'.
+################################################################################################################################################
+
+ft:ControlTypeForceControlledShape
+    a sh:NodeShape ;
+    sh:targetClass ft:FatigueTestSeries ;
+    sh:sparql [
+        a sh:SPARQLConstraint ;
+        sh:message "If mean_stress_value is '0.0' and fatigue_testing_machine_class does not include the keyword 'ultrasonic', then control_type must be 'force_controlled'." ;
+        sh:select """
+            PREFIX ft: <https://w3id.org/pmd/co/fatiguetesting/>
+            PREFIX ftctval: <https://w3id.org/pmd/co/fatiguetesting/ControlTypeValue#>
+            SELECT $this
+            WHERE {
+                $this ft:mean_stress_value ?mean_stress .
+                $this ft:fatigue_testing_machine_class ?machine_class .
+                $this ft:control_type ?control_type .
+                FILTER(
+                    ?mean_stress = "0.0"^^xsd:double &&
+                    !CONTAINS(STR(?machine_class), "ultrasonic"^^xsd:string) &&
+                    ?control_type != ftctval:force_controlled
+                )
+            }
+        """ ;
+    ] .
